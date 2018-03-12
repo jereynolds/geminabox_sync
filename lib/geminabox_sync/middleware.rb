@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 module GeminaboxSync
   class Middleware
     IGNORE_GET_PATHS = [
