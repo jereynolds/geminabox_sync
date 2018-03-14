@@ -1,4 +1,5 @@
 require 'aws-sdk-s3'
+require 'digest/md5'
 require 'geminabox'
 require 'pathname'
 

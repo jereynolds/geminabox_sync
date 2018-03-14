@@ -10,7 +10,12 @@ module GeminaboxSync
         local_path = path(object.key)
         local_path.dirname.mkpath()
 
-        object.download_file(path(object.key))
+        file_md5 = local_path.file? ? Digest::MD5.hexdigest(local_path.read) : nil
+        s3_md5 = JSON.parse(object.etag)
+
+        unless s3_md5.eql?(file_md5)
+          object.download_file(path(object.key))
+        end
       end
     end
 
